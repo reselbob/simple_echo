@@ -1,0 +1,29 @@
+{
+  "name": "simple_echo",
+  "version": "1.0.0",
+  "description": "A simple HTTP server that acknowledges GET requests and return the body of PPOST requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reselbob/simple_echo.git"
+  },
+  "author": "Bob Reselman <reselbob@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reselbob/simple_echo/issues"
+  },
+  "homepage": "https://github.com/reselbob/simple_echo#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "faker": "^5.1.0",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  }
+}
