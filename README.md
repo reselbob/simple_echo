@@ -1,4 +1,4 @@
-# simple_echo
+# Simple Receiver
 
 Runs by default on port `3030` or at the value assigned to `SIMPLE_ECHO_PORT`
 
