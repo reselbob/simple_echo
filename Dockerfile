@@ -4,5 +4,5 @@ WORKDIR /app
 COPY ./index.js /app
 COPY ./package.json /app
 RUN npm install --only-production
-EXPOSE 3000
+EXPOSE 3030
 CMD node index.js
