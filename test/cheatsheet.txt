@@ -1,0 +1,9 @@
+docker image tag receiver:latest reselbob/receiver:latest
+
+docker image push reselbob/receiver:latest
+
+docker run -p 3030:3030 -d --name myreceiver reselbob/receiver:latest
+
+curl -X POST 'http://localhost:3030/' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:3030/' --data '{"firstName":"Cool", "lastName":"McCool", "dob":"1979-01-27", "email":"cool.mccool@reallycool.com", "phone":"123-456-7890"}'
+
+curl localhost:3030/ping

@@ -4,7 +4,7 @@
   "description": "A simple HTTP server that acknowledges GET requests and return the body of PPOST requests",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
