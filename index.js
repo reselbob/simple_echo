@@ -20,30 +20,42 @@ const router = express.Router();
 
 
 router.route('/')
-    .get(async (req, res) => {
-        res.set ('Content-Type', 'application/json');
-        res.status(200);
-        const obj = {};
-        obj.receivedMethod = 'GET';
-        obj.receivedBody = '';
-        console.log(JSON.stringify(obj));
-        res.send(obj).end();
+    .get(async (req, res, next) => {
+        try {
+            let defaultStatus = 201;
+            if(Object.keys(req.body).length === 0 && req.body.constructor === Object) defaultStatus = 200;
+            const receivedBody = req.body || '';
+            res.set('Content-Type', 'application/json');
+            res.status(defaultStatus);
+            const obj = {};
+            obj.receivedMethod = 'GET';
+            obj.receivedBody = receivedBody;
+            console.log(JSON.stringify(obj));
+            res.send(obj).end();
+        } catch (e) {
+            next(e)
+        }
     })
-    .post(async (req, res) => {
-        res.set ('Content-Type', 'application/json');
-        res.status(201);
-        const data = {};
-        data.receivedMethod = 'POST';
-        data.receivedBody = req.body;
-        console.log(JSON.stringify(data));
-        res.json(data).end();
-    });
+    .post(async (req, res, next) => {
+        try {
+            res.set('Content-Type', 'application/json');
+            res.status(201);
+            const data = {};
+            data.receivedMethod = 'POST';
+            data.receivedBody = req.body;
+            console.log(JSON.stringify(data));
+            res.json(data).end();
+        } catch (e) {
+            next(e)
+        }
 
+    })
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/', router);
 
 const server = app.listen(port, () => console.log(`${appName} started at ${new Date()} and listening on port ${port}`));
+
 const shutdown = async (signal) => {
     let shutdownMessage;
 

@@ -18,6 +18,7 @@ describe('API Tests: ', () => {
         supertest(server)
             .get('/')
             .set('Accept', 'application/json')
+            .expect(200)
             .then((res) => {
                 expect(res.body).to.be.an('object');
                 expect(res.body.receivedMethod).to.equal('GET');
@@ -25,8 +26,22 @@ describe('API Tests: ', () => {
 
     });
 
+    it(`${appName} Can GET with body`, async function(){
+        const data = {data:faker.lorem.words(10)};
+        supertest(server)
+            .get('/')
+            .send(data)
+            .expect(201)
+            .set('Accept', 'application/json')
+            .then((res) => {
+                expect(res.body).to.be.an('object');
+                expect(res.body.receivedMethod).to.equal('GET');
+                expect(res.body.receivedBody.data).to.equal(data.data);
+            })
+
+    });
+
     it(`${appName} Can POST`, async function(){
-        //Go get all the lists
         const data = {data:faker.lorem.words(10)};
         supertest(server)
             .post('/')
