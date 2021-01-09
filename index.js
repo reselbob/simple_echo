@@ -50,6 +50,20 @@ router.route('/')
         }
 
     })
+router.route('/ping')
+    .get(async (req, res, next) => {
+        try {
+            res.set('Content-Type', 'application/json');
+            res.status(200);
+            const obj = {};
+            obj.receivedMethod = 'GET/PING';
+            obj.receivedBody = new Date();
+            console.log(JSON.stringify(obj));
+            res.send(obj).end();
+        } catch (e) {
+            next(e)
+        }
+    });
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/', router);

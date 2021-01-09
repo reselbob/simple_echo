@@ -26,6 +26,19 @@ describe('API Tests: ', () => {
 
     });
 
+    it(`${appName} Can PING `, async function(){
+        //Go get all the lists
+        supertest(server)
+            .get('/ping')
+            .set('Accept', 'application/json')
+            .expect(200)
+            .then((res) => {
+                expect(res.body).to.be.an('object');
+                expect(res.body.receivedMethod).to.equal('GET/PING');
+            })
+
+    });
+
     it(`${appName} Can GET with body`, async function(){
         const data = {data:faker.lorem.words(10)};
         supertest(server)
