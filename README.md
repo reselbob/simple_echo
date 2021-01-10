@@ -23,6 +23,15 @@ Runs by default on port `3030` or at the value assigned to `SIMPLE_ECHO_PORT`
 
 ## Running the Code against the Container
 
+
+### PING
+
+`curl localhost:3030/ping`
+
+You'll get output similar to the following
+
+`{"receivedMethod":"GET/PING","receivedBody":"2021-01-10T04:10:46.192Z"}`
+
 ### GET
 
 `curl localhost:3030`
