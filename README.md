@@ -6,6 +6,10 @@ Runs by default on port `3030` or at the value assigned to `SIMPLE_ECHO_PORT`
 
 `npm install`
 
+## Test
+
+`npm test`
+
 ## Run
 
 `node index.js`
