@@ -6,4 +6,12 @@ docker run -p 3030:3030 -d --name myreceiver reselbob/receiver:latest
 
 curl -X POST 'http://localhost:3030/' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:3030/' --data '{"firstName":"Cool", "lastName":"McCool", "dob":"1979-01-27", "email":"cool.mccool@reallycool.com", "phone":"123-456-7890"}'
 
+curl -X GET 'http://localhost:3030/' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:3030/' --data '{"firstName":"Cool", "lastName":"McCool", "dob":"1979-01-27", "email":"cool.mccool@reallycool.com", "phone":"123-456-7890"}'
+
+curl -X GET 'http://localhost:3030/' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:3030/' --data '{"firstName":"Cool"}'
+
+
+curl -X GET 'http://localhost:3030/as_string' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: text/html' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:3030/as_string' --data 'cheese'
+
+
 curl localhost:3030/ping
